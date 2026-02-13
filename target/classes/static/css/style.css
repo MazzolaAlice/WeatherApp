@@ -1,0 +1,144 @@
+ *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Sfondo gradient meteo */
+body {
+    height: 100vh;
+    background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Container principale */
+.container {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    width: 350px;
+    text-align: center;
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+/* Titolo */
+h1 {
+    margin-bottom: 20px;
+    color: #333;
+}
+/* Form */
+form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    outline: none;
+    transition: 0.3s;
+}
+
+input[type="text"]:focus {
+    border-color: #74ebd5;
+    box-shadow: 0 0 5px rgba(116,235,213,0.8);
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 10px;
+    background: #74ebd5;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #4fd1c5;
+    transform: translateY(-2px);
+}
+/* Card meteo */
+.card {
+    background: linear-gradient(135deg, #ACB6E5, #74ebd5);
+    padding: 20px;
+    border-radius: 15px;
+    color: white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.card h2 {
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 18px;
+    margin: 5px 0;
+}
+
+/* Animazione */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* Classi background dinamiche */
+body.cold {
+    background: linear-gradient(135deg, #89f7fe, #66a6ff);
+}
+
+body.mild {
+    background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+}
+
+body.hot {
+    background: linear-gradient(135deg, #f7971e, #ffd200);
+}
+
+
+/* Transizione fluida cambio meteo */
+body {
+    transition: background 0.8s ease;
+}
+@media (max-width: 600px) { body { padding: 20px; align-items: flex-start; } .container { width: 100%; padding: 25px; border-radius: 15px; } h1 { font-size: 24px; } form { flex-direction: column; } input[type="text"] { width: 100%; } button { width: 100%; } .card p { font-size: 16px; } }
+
+/* ===== FORECAST ===== */
+
+.forecast {
+    margin-top: 40px;
+}
+
+.forecast-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.forecast-card {
+    background: rgba(255,255,255,0.2);
+    padding: 15px;
+    border-radius: 15px;
+    width: 120px;
+    text-align: center;
+    backdrop-filter: blur(8px);
+    transition: transform 0.3s;
+}
+
+.forecast-card:hover {
+    transform: scale(1.05);
+}
+
