@@ -109,5 +109,5 @@ Progetto a scopo didattico.
 Alice Mazzola
 
 GitHub:
-https://github.com/tuo-username
+https://github.com/MazzolaAlice
 # WeatherApp
