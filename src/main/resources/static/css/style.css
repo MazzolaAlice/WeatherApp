@@ -1,34 +1,33 @@
-/* ===== RESET ===== */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Segoe UI", Roboto, Arial, sans-serif;
-}
 
-/* ===== BACKGROUND METEO ===== */
+
+/* ===== BASE ===== */
 body {
     min-height: 100vh;
-    background: linear-gradient(120deg, #1e3c72, #2a5298);
+    margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 30px;
-    transition: background 0.8s ease;
+    font-family: "Segoe UI", sans-serif;
 }
 
-/* Temperature themes */
+/* ===== FREDDO ===== */
 body.cold {
-    background: linear-gradient(120deg, #0f2027, #2c5364);
+    background:
+        linear-gradient(135deg, #288fe9, #02ced8);
 }
 
+/* ===== TEMPERATO ===== */
 body.mild {
-    background: linear-gradient(120deg, #1e3c72, #2a5298);
+    background:
+        linear-gradient(135deg, #5de985, #92a3ee);
 }
 
+/* ===== CALDO ===== */
 body.hot {
-    background: linear-gradient(120deg, #ff7e5f, #feb47b);
+    background:
+        linear-gradient(135deg, #f7971e, #ffd200);
 }
+
 
 /* ===== CONTAINER ===== */
 .container {

@@ -24,7 +24,8 @@ public class WeatherController {
      * Mostra la homepage con il form di ricerca.
      */
     @GetMapping("/")
-    public String home() {
+    public String home(Model model) {
+        model.addAttribute("bgClass", "mild");
         return "index"; // templates/index.html
     }
 
@@ -38,15 +39,31 @@ public class WeatherController {
 public String getWeather(@RequestParam String city, Model model) {
 
     try {
+        
         WeatherResponse weather =
                 weatherService.getWeatherByCity(city);
         model.addAttribute("weather", weather);
-        model.addAttribute("city", city);
+        model.addAttribute("city", city); 
+        double temp =
+                        weather.getCurrent_weather().getTemperature();
+         String bgClass;
+
+        if (temp <= 10) {
+            bgClass = "cold";
+        } else if (temp >= 25) {
+            bgClass = "hot";
+        } else {
+            bgClass = "mild";
+        }
+        model.addAttribute("bgClass", bgClass);
+
     } catch (RuntimeException ex) {
 
         // Messaggio errore da mostrare in pagina
         model.addAttribute("error",
                 "Città non trovata. Riprova.");
+                model.addAttribute("bgClass", "mild");
+
     }
     return "index";
 }
