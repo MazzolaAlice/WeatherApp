@@ -34,16 +34,20 @@ public class WeatherController {
      * @param city Nome città inserito dall'utente
      * @param model Oggetto per passare dati al frontend
      */
-    @GetMapping("/weather")
-    public String getWeather(
-            @RequestParam String city,
-            Model model
-    ) {
-        WeatherResponse response = weatherService.getWeatherByCity(city);
+@GetMapping("/weather")
+public String getWeather(@RequestParam String city, Model model) {
 
-        model.addAttribute("weather", response);
+    try {
+        WeatherResponse weather =
+                weatherService.getWeatherByCity(city);
+        model.addAttribute("weather", weather);
         model.addAttribute("city", city);
+    } catch (RuntimeException ex) {
 
-        return "index";
+        // Messaggio errore da mostrare in pagina
+        model.addAttribute("error",
+                "Città non trovata. Riprova.");
     }
+    return "index";
+}
 }

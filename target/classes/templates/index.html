@@ -16,7 +16,10 @@
         <input type="text" name="city" placeholder="Inserisci città">
         <button type="submit">Cerca</button>
     </form>
-
+    <p class="error"
+        th:if="${error != null}"
+        th:text="${error}">
+    </p>
     <!-- Card meteo -->
     <div th:if="${weather != null}" class="card">
 
@@ -37,7 +40,7 @@
 </div>
 
 
-<div th:if="${weather.daily != null}" class="forecast">
+<div th:if="${weather != null and weather.daily != null}" class="forecast">
 
     <h2>Previsioni 7 Giorni</h2>
 

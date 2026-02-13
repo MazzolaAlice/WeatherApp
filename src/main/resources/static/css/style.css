@@ -1,144 +1,228 @@
- *{
+/* ===== RESET ===== */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
 }
 
-/* Sfondo gradient meteo */
+/* ===== BACKGROUND METEO ===== */
 body {
-    height: 100vh;
-    background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+    min-height: 100vh;
+    background: linear-gradient(120deg, #1e3c72, #2a5298);
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 30px;
+    transition: background 0.8s ease;
 }
 
-/* Container principale */
+/* Temperature themes */
+body.cold {
+    background: linear-gradient(120deg, #0f2027, #2c5364);
+}
+
+body.mild {
+    background: linear-gradient(120deg, #1e3c72, #2a5298);
+}
+
+body.hot {
+    background: linear-gradient(120deg, #ff7e5f, #feb47b);
+}
+
+/* ===== CONTAINER ===== */
 .container {
-    background: white;
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    width: 350px;
+    width: 100%;
+    max-width: 420px;
+    padding: 35px;
+    border-radius: 25px;
+
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    box-shadow: 0 20px 50px rgba(0,0,0,0.25);
     text-align: center;
-    animation: fadeIn 0.6s ease-in-out;
+
+    animation: fadeIn 0.7s ease;
 }
 
-/* Titolo */
+/* ===== TITLE ===== */
 h1 {
-    margin-bottom: 20px;
-    color: #333;
+    color: white;
+    margin-bottom: 25px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
 }
-/* Form */
+
+/* ===== FORM ===== */
 form {
     display: flex;
     gap: 10px;
-    margin-bottom: 25px;
+    margin-bottom: 30px;
 }
 
 input[type="text"] {
     flex: 1;
-    padding: 10px;
-    border-radius: 10px;
-    border: 1px solid #ccc;
+    padding: 12px 15px;
+    border-radius: 12px;
+    border: none;
     outline: none;
+    font-size: 15px;
+
+    background: rgba(255,255,255,0.9);
     transition: 0.3s;
 }
 
 input[type="text"]:focus {
-    border-color: #74ebd5;
-    box-shadow: 0 0 5px rgba(116,235,213,0.8);
+    box-shadow: 0 0 0 2px rgba(255,255,255,0.6);
 }
 
 button {
-    padding: 10px 15px;
+    padding: 12px 18px;
+    border-radius: 12px;
     border: none;
-    border-radius: 10px;
-    background: #74ebd5;
+    background: rgba(255,255,255,0.25);
     color: white;
-    font-weight: bold;
+    font-weight: 600;
     cursor: pointer;
+    backdrop-filter: blur(10px);
     transition: 0.3s;
 }
 
 button:hover {
-    background: #4fd1c5;
+    background: rgba(255,255,255,0.4);
     transform: translateY(-2px);
 }
-/* Card meteo */
+
+/* ===== CURRENT WEATHER CARD ===== */
 .card {
-    background: linear-gradient(135deg, #ACB6E5, #74ebd5);
-    padding: 20px;
-    border-radius: 15px;
+    padding: 25px;
+    border-radius: 20px;
+
+    background: rgba(255,255,255,0.25);
+    backdrop-filter: blur(12px);
+
     color: white;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
 
 .card h2 {
     margin-bottom: 10px;
+    font-weight: 600;
 }
 
 .card p {
     font-size: 18px;
-    margin: 5px 0;
+    margin: 6px 0;
+    opacity: 0.95;
 }
 
-/* Animazione */
+/* ===== FORECAST ===== */
+.forecast {
+    margin-top: 35px;
+    text-align: center;
+}
+
+.forecast h2 {
+    color: white;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+/* Container scroll elegante */
+.forecast-container {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+}
+
+/* Scrollbar soft */
+.forecast-container::-webkit-scrollbar {
+    height: 6px;
+}
+
+.forecast-container::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.4);
+    border-radius: 10px;
+}
+
+/* Card giorno */
+.forecast-card {
+    min-width: 110px;
+    padding: 15px;
+    border-radius: 18px;
+
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(10px);
+
+    color: white;
+    font-size: 14px;
+
+    transition: 0.3s;
+}
+
+.forecast-card:hover {
+    transform: translateY(-5px) scale(1.03);
+    background: rgba(255,255,255,0.3);
+}
+
+/* ===== ANIMATION ===== */
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(25px);
     }
     to {
         opacity: 1;
         transform: translateY(0);
     }
 }
-/* Classi background dinamiche */
-body.cold {
-    background: linear-gradient(135deg, #89f7fe, #66a6ff);
+
+/* ===== MOBILE ===== */
+@media (max-width: 600px) {
+
+    body {
+        align-items: flex-start;
+        padding: 20px;
+    }
+
+    .container {
+        padding: 25px;
+        border-radius: 20px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    form {
+        flex-direction: column;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    .card p {
+        font-size: 16px;
+    }
+
+    .forecast-card {
+        min-width: 95px;
+        font-size: 13px;
+    }
 }
+/* ===== ERROR MESSAGE ===== */
+.error {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 10px;
 
-body.mild {
-    background: linear-gradient(135deg, #74ebd5, #ACB6E5);
-}
-
-body.hot {
-    background: linear-gradient(135deg, #f7971e, #ffd200);
-}
-
-
-/* Transizione fluida cambio meteo */
-body {
-    transition: background 0.8s ease;
-}
-@media (max-width: 600px) { body { padding: 20px; align-items: flex-start; } .container { width: 100%; padding: 25px; border-radius: 15px; } h1 { font-size: 24px; } form { flex-direction: column; } input[type="text"] { width: 100%; } button { width: 100%; } .card p { font-size: 16px; } }
-
-/* ===== FORECAST ===== */
-
-.forecast {
-    margin-top: 40px;
-}
-
-.forecast-container {
-    display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.forecast-card {
-    background: rgba(255,255,255,0.2);
-    padding: 15px;
-    border-radius: 15px;
-    width: 120px;
-    text-align: center;
-    backdrop-filter: blur(8px);
-    transition: transform 0.3s;
-}
-
-.forecast-card:hover {
-    transform: scale(1.05);
+    background: rgba(255, 0, 0, 0.15);
+    color: #ff4d4d;
+    font-weight: 500;
+    font-size: 14px;
 }
 
