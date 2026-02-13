@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Weather App</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Weather App</h1>
+
+    <form action="/weather" method="get">
+        <input type="text" name="city" placeholder="Inserisci città">
+        <button type="submit">Cerca</button>
+    </form>
+
+    <!-- Card meteo -->
+    <div th:if="${weather != null}" class="card">
+
+        <h2 th:text="${city}"></h2>
+
+        <p>
+            Temperatura:
+            <span th:text="${weather.current_weather.temperature}"></span> °C
+        </p>
+
+        <p>
+            Vento:
+            <span th:text="${weather.current_weather.windspeed}"></span> km/h
+        </p>
+
+    </div>
+
+</div>
+
+
+<div th:if="${weather.daily != null}" class="forecast">
+
+    <h2>Previsioni 7 Giorni</h2>
+
+    <div class="forecast-container">
+
+        <div class="forecast-card"
+             th:each="i : ${#numbers.sequence(0,6)}">
+
+            <p th:text="${weather.daily.time[i]}"></p>
+
+            <p>
+                Max:
+                <span th:text="${weather.daily.temperature_2m_max[i]}"></span> °C
+            </p>
+
+            <p>
+                Min:
+                <span th:text="${weather.daily.temperature_2m_min[i]}"></span> °C
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</body>
+</html>
