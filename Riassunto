@@ -1,0 +1,23 @@
+Riassunto del Progetto – Weather App
+
+La mia applicazione è una Web App meteo sviluppata con Spring Boot che consente agli utenti di inserire il nome di una città e visualizzare in tempo reale alcune informazioni meteorologiche principali. 
+In particolare, l’app recupera temperatura attuale, velocità del vento e livello di umidità utilizzando le API pubbliche di Open‑Meteo. 
+L’obiettivo del progetto era quello di costruire un’applicazione completa lato backend e frontend, integrando servizi esterni, gestione degli errori e interfaccia utente responsive.
+
+Dal punto di vista funzionale, l’utente accede a una homepage con un form di ricerca dove può digitare la città desiderata. 
+Una volta inviata la richiesta, il controller Spring gestisce l’input, richiama il WeatherService e, tramite un client dedicato, interroga le API esterne. 
+I dati ricevuti vengono mappati in DTO strutturati e restituiti alla vista Thymeleaf, che li mostra in modo chiaro e stilizzato. 
+Ho implementato anche la gestione degli errori: se la città non è valida o non viene trovata, l’app mostra un messaggio appropriato senza interrompere l’esperienza utente. 
+Inoltre, le risposte API vengono registrate per facilitare debug e monitoraggio.
+
+Durante lo sviluppo ho utilizzato l’intelligenza artificiale come supporto tecnico. 
+Mi ha aiutato a strutturare il progetto, configurare correttamente Maven e Spring Boot, risolvere errori di mapping dei dati e problemi di template parsing. 
+È stata particolarmente utile nel debugging, suggerendo dove individuare NullPointerException, errori di script o dipendenze mancanti. 
+Ho anche sfruttato l’IA per generare documentazione, README e migliorare la qualità del codice.
+
+Questo progetto mi ha permesso di consolidare competenze su architettura MVC, consumo di API REST, gestione DTO e organizzazione dei layer applicativi. 
+Una delle sfide principali è stata comprendere il flusso completo dei dati: dalla richiesta utente, alla geocodifica della città, fino alla chiamata meteo finale. 
+Anche il frontend ha richiesto attenzione, soprattutto per rendere la pagina responsive e dinamica.
+
+Sono particolarmente orgoglioso dell’integrazione end‑to‑end funzionante: dall’inserimento della città fino alla visualizzazione dei dati meteo reali, con gestione degli errori inclusa. 
+Se avessi più tempo, implementerei funzionalità aggiuntive come il forecast a 7 giorni, grafici delle temperature, geolocalizzazione automatica e caching delle richieste per migliorare le performance.
